@@ -7,17 +7,17 @@
     android:gravity="center"
     android:padding="50dp"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".LogInActivity">
 
     <TextView
+        android:id="@+id/fon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="30dp"
-        android:fontFamily="@font/poppins"
+        android:fontFamily="@font/poppins_bold"
         android:text="Spogify"
         android:textColor="@color/green_500"
-        android:textSize="50sp"
-        android:textStyle="bold" />
+        android:textSize="50sp" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -58,32 +58,42 @@
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="130dp"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:gravity="center"
+        android:orientation="vertical"
         android:layout_marginTop="15dp">
-
-        <Button
-            android:id="@+id/btnSignup"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:layout_weight="1"
-            android:background="@drawable/button2"
-            android:fontFamily="@font/poppins"
-            android:text="Sign Up"
-            android:textColor="@color/white" />
 
         <Button
             android:id="@+id/btnLogin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp"
             android:layout_weight="1"
             android:background="@drawable/button"
             android:fontFamily="@font/poppins"
             android:text="Log In"
+            android:textAllCaps="false"
             android:textColor="@color/white" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:fontFamily="@font/poppins"
+            android:text="No account yet?" />
+
+        <Button
+            android:id="@+id/btnSignup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/button2"
+            android:fontFamily="@font/poppins"
+            android:text="Sign Up"
+            android:textAllCaps="false"
+            android:textColor="@color/white" />
+
     </LinearLayout>
 
 </LinearLayout>
