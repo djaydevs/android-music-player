@@ -2,6 +2,7 @@ package com.example.playlistapp;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -9,6 +10,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class SignUpActivity extends AppCompatActivity {
@@ -17,6 +19,7 @@ public class SignUpActivity extends AppCompatActivity {
     Button btnSave, btnCancel;
     ImageButton btnCamera, btnGallery;
     ImageView btnMail, btnContact;
+    AlertDialog alertDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,30 +43,35 @@ public class SignUpActivity extends AppCompatActivity {
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String name = etName.getText().toString();
-                String email = etEmail.getText().toString();
-                String password = etPassword.getText().toString();
-                String contact = etContact.getText().toString();
+                String Name = etName.getText().toString();
+                String Email = etEmail.getText().toString();
+                String Password = etPassword.getText().toString();
+                String Contact = etContact.getText().toString();
 
-                if(!isEmailValid(email)){
+                if(!isEmailValid(Email)){
                     Toast.makeText(SignUpActivity.this, "Not a valid email, please try again.", Toast.LENGTH_SHORT).show();
                 }
-                else if(!isPasswordValid(password)){
+                else if(!isPasswordValid(Password)){
                     Toast.makeText(SignUpActivity.this, "Please insert more than 6 characters.",Toast.LENGTH_SHORT) .show();
                 }
-                else if(email.isEmpty()){
+                else if(Email.isEmpty()){
                     Toast.makeText(SignUpActivity.this, "Email field required!", Toast.LENGTH_SHORT).show();
                 }
-                else if(password.isEmpty()) {
+                else if(Password.isEmpty()) {
                     Toast.makeText(SignUpActivity.this, "Password field required!", Toast.LENGTH_SHORT).show();
                 }
                 else {
-                    boolean isInserted= dbHelper.InsertRecord(email, password, name, contact);
-                    Toast.makeText(SignUpActivity.this, "Sign up successful!", Toast.LENGTH_SHORT).show();
-                    refresh();
-                    Intent intent = new Intent(SignUpActivity.this, LogInActivity.class);
-                    startActivity(intent);
-                    finish();
+                    Boolean result = dbHelper.InsertRecord(Email, Password, Name, Contact);
+                    if (result == true) {
+                        Toast.makeText(SignUpActivity.this, "Sign up successful!", Toast.LENGTH_SHORT).show();
+                        refresh();
+                        Intent intent = new Intent(SignUpActivity.this, LogInActivity.class);
+                        startActivity(intent);
+                        finish();
+                    }
+                    else {
+                        Toast.makeText(SignUpActivity.this, "Sign-up failed!", Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
         });
@@ -77,6 +85,35 @@ public class SignUpActivity extends AppCompatActivity {
                 finish();
             }
         });
+
+        btnMail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showCustomEmailDialog();
+            }
+        });
+    }
+
+    private void showCustomEmailDialog() {
+        // Inflate the custom layout file
+        View dialogView = LayoutInflater.from(this).inflate(R.layout.email_layout, null);
+
+        // Create a new AlertDialog object and set the custom layout as its view
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setView(dialogView);
+
+        ImageView closeButton = dialogView.findViewById(R.id.btnClose);
+
+        closeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Close the dialog when the button is clicked
+                alertDialog.dismiss();
+            }
+        });
+
+        alertDialog = builder.create();
+        alertDialog.show();
     }
 
     private void refresh() {

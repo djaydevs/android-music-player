@@ -1,7 +1,6 @@
 package com.example.playlistapp;
 
 import android.content.Intent;
-import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -32,20 +31,20 @@ public class LogInActivity extends AppCompatActivity {
                 String email = etEmail.getText().toString();
                 String password = etPassword.getText().toString();
 
-                // Query the database for a matching record
-                Cursor cursor = dbHelper.UserLogin(email, password);
-
-                if (cursor.getCount() == 0) {
-                    // Authentication successful
-                    Toast.makeText(LogInActivity.this, "Login successful!", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(LogInActivity.this, PlaylistActivity.class);
-                    startActivity(intent);
-                } else {
-                    // Authentication failed
-                    Toast.makeText(LogInActivity.this, "Invalid username or password!", Toast.LENGTH_SHORT).show();
+                if (email.equals("") && password.equals("")) {
+                    Toast.makeText(LogInActivity.this, "Please enter your email and password!", Toast.LENGTH_SHORT).show();
                 }
-                cursor.close();
-                //onDestroy();
+                else {
+                    Boolean result = dbHelper.UserLogin(email, password);
+                    if (result == false) {
+                        Toast.makeText(LogInActivity.this, "Invalid email and password!", Toast.LENGTH_SHORT).show();
+                    }
+                    else {
+                        Toast.makeText(LogInActivity.this, "Login Successful!", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(LogInActivity.this, PlaylistActivity.class);
+                        startActivity(intent);
+                    }
+                }
             }
         });
 
@@ -54,6 +53,7 @@ public class LogInActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(LogInActivity.this, SignUpActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
     }
