@@ -66,7 +66,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppins"
-            android:textColor="@color/black_400" />
+            android:textColor="@color/black_400"
+            android:textSize="15sp" />
 
     </LinearLayout>
 
@@ -88,12 +89,13 @@
             android:orientation="horizontal" >
 
             <EditText
-                android:id="@+id/etEmail"
+                android:id="@+id/etEmailSignUp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:fontFamily="@font/poppins"
-                android:textColor="@color/black_400" />
+                android:textColor="@color/black_400"
+                android:textSize="15sp" />
             <ImageView
                 android:id="@+id/btnMail"
                 android:layout_width="60dp"
@@ -119,11 +121,13 @@
             android:textColor="@color/black_400" />
 
         <EditText
-            android:id="@+id/etPassword"
+            android:id="@+id/etPasswordSignUp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppins"
-            android:textColor="@color/black_400" />
+            android:textColor="@color/black_400"
+            android:textSize="15sp"
+            android:inputType="textPassword" />
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -147,8 +151,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:fontFamily="@font/poppins"
                 android:textColor="@color/black_400"
-                android:fontFamily="@font/poppins" />
+                android:textSize="15sp" />
             <ImageView
                 android:id="@+id/btnContact"
                 android:layout_width="60dp"
@@ -167,7 +172,7 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/btnSignup"
+            android:id="@+id/btnSave"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
@@ -180,7 +185,7 @@
             android:textColor="@color/white" />
 
         <Button
-            android:id="@+id/btnLogin"
+            android:id="@+id/btnCancel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
