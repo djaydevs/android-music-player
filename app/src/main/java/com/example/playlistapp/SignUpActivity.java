@@ -2,6 +2,7 @@ package com.example.playlistapp;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -21,6 +22,8 @@ public class SignUpActivity extends AppCompatActivity {
     ImageView btnMail, btnContact;
     AlertDialog alertDialog;
 
+    int camera, gallery, sms;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,6 +42,40 @@ public class SignUpActivity extends AppCompatActivity {
         btnGallery = (ImageButton) findViewById(R.id.btnGallery);
         btnMail = (ImageView) findViewById(R.id.btnMail);
         btnContact = (ImageView) findViewById(R.id.btnContact);
+
+        camera = 1;
+        gallery = 2;
+        sms = 3;
+
+        btnCamera.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setAction(MediaStore.ACTION_IMAGE_CAPTURE);
+                startActivityForResult(intent, camera);
+            }
+        });
+
+        btnGallery.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+        btnMail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showCustomEmailDialog();
+            }
+        });
+
+        btnContact.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showCustomContactDialog();
+            }
+        });
 
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -85,13 +122,6 @@ public class SignUpActivity extends AppCompatActivity {
                 finish();
             }
         });
-
-        btnMail.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showCustomEmailDialog();
-            }
-        });
     }
 
     private void showCustomEmailDialog() {
@@ -103,6 +133,28 @@ public class SignUpActivity extends AppCompatActivity {
         builder.setView(dialogView);
 
         ImageView closeButton = dialogView.findViewById(R.id.btnClose);
+
+        closeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Close the dialog when the button is clicked
+                alertDialog.dismiss();
+            }
+        });
+
+        alertDialog = builder.create();
+        alertDialog.show();
+    }
+
+    private void showCustomContactDialog() {
+        // Inflate the custom layout file
+        View dialogView = LayoutInflater.from(this).inflate(R.layout.message_layout, null);
+
+        // Create a new AlertDialog object and set the custom layout as its view
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setView(dialogView);
+
+        ImageView closeButton = dialogView.findViewById(R.id.btnClose2);
 
         closeButton.setOnClickListener(new View.OnClickListener() {
             @Override

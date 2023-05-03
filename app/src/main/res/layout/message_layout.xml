@@ -1,40 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:padding="25dp"
-    android:orientation="vertical"
     android:background="@drawable/background">
 
     <ImageView
-        android:id="@+id/btnClose"
+        android:id="@+id/btnClose2"
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:layout_gravity="right"
         android:src="@drawable/ic_cancel"
         android:clickable="true" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.12"
-            android:text="From: "
-            android:fontFamily="@font/poppins" />
-
-        <TextView
-            android:id="@+id/tvEmailFrom"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="name@example.com"
-            android:textColor="@color/black_500"
-            android:fontFamily="@font/poppins" />
-    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -49,36 +27,15 @@
             android:fontFamily="@font/poppins"
             android:text="To: " />
 
-        <EditText
-            android:id="@+id/etEmailTo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:fontFamily="@font/poppins"
-            android:inputType="textEmailAddress"
-            android:textSize="14sp" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="3dp"
-        android:orientation="horizontal">
-
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="0"
-            android:fontFamily="@font/poppins"
-            android:text="Subject: " />
-
-        <EditText
-            android:id="@+id/etSubject"
+            android:id="@+id/tvNumberTo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:fontFamily="@font/poppins"
-            android:textSize="14sp" />
+            android:text="09999999999"
+            android:textColor="@color/black_500"
+            android:fontFamily="@font/poppins" />
+
     </LinearLayout>
 
     <TextView
@@ -89,7 +46,7 @@
         android:text="Message " />
 
     <EditText
-        android:id="@+id/etEmailMessage"
+        android:id="@+id/etContactMessage"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
@@ -105,7 +62,7 @@
         android:textSize="14sp" />
 
     <Button
-        android:id="@+id/btnSend"
+        android:id="@+id/btnSend2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -114,5 +71,4 @@
         android:text="Send"
         android:textAllCaps="false"
         android:textColor="@color/white" />
-
 </LinearLayout>

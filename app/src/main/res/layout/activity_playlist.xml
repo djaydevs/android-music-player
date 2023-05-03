@@ -34,7 +34,7 @@
         android:padding="10dp" >
 
         <Button
-            android:id="@+id/btnSignup"
+            android:id="@+id/btnSearch"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
@@ -46,7 +46,7 @@
             android:textColor="@color/white" />
 
         <Button
-            android:id="@+id/btnLogin"
+            android:id="@+id/btnStopMusic"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"

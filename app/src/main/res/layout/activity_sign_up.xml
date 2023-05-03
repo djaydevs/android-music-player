@@ -153,7 +153,8 @@
                 android:layout_weight="1"
                 android:fontFamily="@font/poppins"
                 android:textColor="@color/black_400"
-                android:textSize="15sp" />
+                android:textSize="15sp"
+                android:inputType="number" />
             <ImageView
                 android:id="@+id/btnContact"
                 android:layout_width="60dp"
