@@ -23,7 +23,7 @@
         android:layout_gravity="center"
         android:layout_width="120dp"
         android:layout_height="120dp"
-        android:src="@drawable/ic_image"/>
+        android:src="@drawable/ic_account"/>
 
     <LinearLayout
         android:layout_gravity="center"
@@ -44,14 +44,14 @@
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_marginLeft="2dp"
-            android:src="@drawable/ic_imgsearch"/>
+            android:src="@drawable/ic_image"/>
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        >
+        android:layout_marginTop="10dp"
+        android:orientation="vertical" >
 
         <TextView
             android:layout_width="wrap_content"
@@ -74,6 +74,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:orientation="vertical">
 
         <TextView
@@ -95,7 +96,8 @@
                 android:layout_weight="1"
                 android:fontFamily="@font/poppins"
                 android:textColor="@color/black_400"
-                android:textSize="15sp" />
+                android:textSize="15sp"
+                android:hint="test@example.com"/>
             <ImageView
                 android:id="@+id/btnMail"
                 android:layout_width="60dp"
@@ -127,11 +129,13 @@
             android:fontFamily="@font/poppins"
             android:textColor="@color/black_400"
             android:textSize="15sp"
-            android:inputType="textPassword" />
+            android:inputType="textPassword"
+            android:hint="7 characters atleast"/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:orientation="vertical">
 
         <TextView
@@ -150,10 +154,12 @@
                 android:id="@+id/etContact"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:maxLength="11"
                 android:layout_weight="1"
                 android:fontFamily="@font/poppins"
                 android:textColor="@color/black_400"
                 android:textSize="15sp"
+                android:hint="09XXXXXXXXX"
                 android:inputType="number" />
             <ImageView
                 android:id="@+id/btnContact"
@@ -176,7 +182,7 @@
             android:id="@+id/btnSave"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp"
+            android:layout_margin="8dp"
             android:layout_weight="1"
             android:background="@drawable/button"
             android:fontFamily="@font/poppins"
@@ -189,7 +195,7 @@
             android:id="@+id/btnCancel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp"
+            android:layout_margin="8dp"
             android:layout_weight="1"
             android:background="@drawable/button3"
             android:fontFamily="@font/poppins"

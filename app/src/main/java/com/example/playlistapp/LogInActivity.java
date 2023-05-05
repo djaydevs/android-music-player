@@ -32,7 +32,7 @@ public class LogInActivity extends AppCompatActivity {
                 String password = etPassword.getText().toString();
 
                 if (email.equals("") && password.equals("")) {
-                    Toast.makeText(LogInActivity.this, "Please enter your email and password!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LogInActivity.this, "Please enter your email and password.", Toast.LENGTH_SHORT).show();
                 }
                 else {
                     Boolean result = dbHelper.UserLogin(email, password);
@@ -43,6 +43,7 @@ public class LogInActivity extends AppCompatActivity {
                         Toast.makeText(LogInActivity.this, "Login Successful!", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(LogInActivity.this, PlaylistActivity.class);
                         startActivity(intent);
+                        finish();
                     }
                 }
             }
@@ -53,7 +54,7 @@ public class LogInActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(LogInActivity.this, SignUpActivity.class);
                 startActivity(intent);
-                finish();
+                //finish();
             }
         });
     }

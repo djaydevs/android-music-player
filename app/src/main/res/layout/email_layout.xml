@@ -22,7 +22,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="0.12"
+            android:layout_weight="0"
             android:text="From: "
             android:fontFamily="@font/poppins" />
 
@@ -45,7 +45,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="0.13"
+            android:layout_weight="0"
             android:fontFamily="@font/poppins"
             android:text="To: " />
 
@@ -55,7 +55,6 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:fontFamily="@font/poppins"
-            android:inputType="textEmailAddress"
             android:textSize="14sp" />
     </LinearLayout>
 
@@ -105,7 +104,7 @@
         android:textSize="14sp" />
 
     <Button
-        android:id="@+id/btnSend"
+        android:id="@+id/btnSendEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
