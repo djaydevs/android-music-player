@@ -109,6 +109,11 @@ public class PlaylistActivity extends AppCompatActivity {
         dataModels.add(new DataModel("Cruel Summer", "Taylor Swift", "02:59"));
         dataModels.add(new DataModel("Don't Blame Me", "Taylor Swift", "03:56"));
         dataModels.add(new DataModel("As It Was", "Harry Styles", "02:45"));
+        dataModels.add(new DataModel("Falling", "Harry Styles", "04:00"));
+        dataModels.add(new DataModel("timekeeper", "Greyson Chance", "03:57"));
+        dataModels.add(new DataModel("Athena", "Greyson Chance", "03:58"));
+        dataModels.add(new DataModel("Mastermind", "Taylor Swift", "03:11"));
+        dataModels.add(new DataModel("august", "Taylor Swift", "04:21"));
     }
 
     private void accountProfile() {
@@ -177,9 +182,5 @@ public class PlaylistActivity extends AppCompatActivity {
         adapterForStopMusic = (CustomAdapter) listView.getAdapter();
         Toast.makeText(PlaylistActivity.this, "Music stopped!", Toast.LENGTH_SHORT).show();
         adapterForStopMusic.stopMusic();
-    }
-
-    private void switchAdapter() {
-
     }
 }

@@ -132,6 +132,24 @@ public class CustomAdapter extends ArrayAdapter<DataModel> {
         if (song.equals("As It Was")) {
             viewHolder.ivCover.setBackgroundResource(R.drawable.harrys_house);
         }
+        if (song.equals("As It Was")) {
+            viewHolder.ivCover.setBackgroundResource(R.drawable.harrys_house);
+        }
+        if (song.equals("Falling")) {
+            viewHolder.ivCover.setBackgroundResource(R.drawable.fine_line);
+        }
+        if (song.equals("timekeeper")) {
+            viewHolder.ivCover.setBackgroundResource(R.drawable.portraits);
+        }
+        if (song.equals("Athena")) {
+            viewHolder.ivCover.setBackgroundResource(R.drawable.palladium);
+        }
+        if (song.equals("Mastermind")) {
+            viewHolder.ivCover.setBackgroundResource(R.drawable.midnights);
+        }
+        if (song.equals("august")) {
+            viewHolder.ivCover.setBackgroundResource(R.drawable.folklore);
+        }
 
         viewHolder.btnPlay.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -141,8 +159,6 @@ public class CustomAdapter extends ArrayAdapter<DataModel> {
                 DataModel dModel = (DataModel) obj;
 
                 if (dataModel.getTitle().equals("Cruel Summer")) {
-                    //viewHolder.ivCover.setBackgroundResource(R.drawable.lover);
-
                     if (mPlayer != null) {
                         mPlayer.stop();
                         mPlayer.release();
@@ -155,8 +171,6 @@ public class CustomAdapter extends ArrayAdapter<DataModel> {
                     }
                 }
                 if (dataModel.getTitle().equals("Don't Blame Me")) {
-                    //viewHolder.ivCover.setBackgroundResource(R.drawable.reputation);
-
                     if (mPlayer != null) {
                         mPlayer.stop();
                         mPlayer.release();
@@ -169,8 +183,6 @@ public class CustomAdapter extends ArrayAdapter<DataModel> {
                     }
                 }
                 if (dataModel.getTitle().equals("As It Was")) {
-                   //viewHolder.ivCover.setBackgroundResource(R.drawable.reputation);
-
                     if (mPlayer != null) {
                         mPlayer.stop();
                         mPlayer.release();
@@ -182,6 +194,67 @@ public class CustomAdapter extends ArrayAdapter<DataModel> {
                         mPlayer.start();
                     }
                 }
+                if (dataModel.getTitle().equals("Falling")) {
+                    if (mPlayer != null) {
+                        mPlayer.stop();
+                        mPlayer.release();
+                        mPlayer = null;
+                    }
+                    else {
+                        mPlayer = MediaPlayer.create(view.getContext(), R.raw.falling);
+                        mPlayer.setLooping(false);
+                        mPlayer.start();
+                    }
+                }
+                if (dataModel.getTitle().equals("timekeeper")) {
+                    if (mPlayer != null) {
+                        mPlayer.stop();
+                        mPlayer.release();
+                        mPlayer = null;
+                    }
+                    else {
+                        mPlayer = MediaPlayer.create(view.getContext(), R.raw.timekeeper);
+                        mPlayer.setLooping(false);
+                        mPlayer.start();
+                    }
+                }
+                if (dataModel.getTitle().equals("Athena")) {
+                    if (mPlayer != null) {
+                        mPlayer.stop();
+                        mPlayer.release();
+                        mPlayer = null;
+                    }
+                    else {
+                        mPlayer = MediaPlayer.create(view.getContext(), R.raw.athena);
+                        mPlayer.setLooping(false);
+                        mPlayer.start();
+                    }
+                }
+                if (dataModel.getTitle().equals("Mastermind")) {
+                    if (mPlayer != null) {
+                        mPlayer.stop();
+                        mPlayer.release();
+                        mPlayer = null;
+                    }
+                    else {
+                        mPlayer = MediaPlayer.create(view.getContext(), R.raw.mastermind);
+                        mPlayer.setLooping(false);
+                        mPlayer.start();
+                    }
+                }
+                if (dataModel.getTitle().equals("august")) {
+                    if (mPlayer != null) {
+                        mPlayer.stop();
+                        mPlayer.release();
+                        mPlayer = null;
+                    }
+                    else {
+                        mPlayer = MediaPlayer.create(view.getContext(), R.raw.august);
+                        mPlayer.setLooping(false);
+                        mPlayer.start();
+                    }
+                }
+
 
                 Toast.makeText(view.getContext(), "Playing - " + dataModel.getTitle() + " (" + dataModel.getArtist() + ")", Toast.LENGTH_LONG).show();
             }
