@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="25dp"
+    android:background="@drawable/background" >
+
+    <ImageView
+        android:id="@+id/btnCLose3"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_gravity="right"
+        android:src="@drawable/ic_cancel"
+        android:clickable="true" />
+
+    <EditText
+        android:id="@+id/etSearch"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/et_selector"
+        android:fontFamily="@font/poppins"
+        android:hint="Search for music or artist"
+        android:textColor="@color/white"
+        android:textColorHighlight="@color/green_500"
+        android:textColorHint="@color/black_200"
+        android:textColorLink="@color/green_500"
+        android:textCursorDrawable="@drawable/cursor"
+        android:textSize="14sp" />
+
+    <Button
+        android:id="@+id/btnSearchMusic"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/button"
+        android:fontFamily="@font/poppins"
+        android:text="Search"
+        android:textAllCaps="false"
+        android:textColor="@color/black_500" />
+</LinearLayout>

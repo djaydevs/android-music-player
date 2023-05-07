@@ -4,45 +4,73 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/black_500"
     android:orientation="vertical"
     android:padding="15dp"
     tools:context=".PlaylistActivity">
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="right"
-        android:layout_margin="5dp"
+        android:layout_marginBottom="25dp"
         android:orientation="horizontal" >
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:fontFamily="@font/poppins_extrabold"
+            android:text="Spogify"
+            android:textColor="@color/green_500"
+            android:textSize="21sp"
+            android:textStyle="bold" />
+
         <ImageView
-            android:id="@+id/imgAccountProfile"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginRight="5dp"
-            android:src="@drawable/ic_account" />
+                android:id="@+id/imgAccountProfile"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:layout_marginRight="8dp"
+                android:src="@drawable/ic_account" />
 
         <TextView
             android:id="@+id/tvLogout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="3dp"
+            android:clickable="true"
             android:fontFamily="@font/poppins"
             android:text="Log Out"
             android:textColor="@color/green_500"
-            android:textSize="16sp"
-            android:clickable="true" />
-
+            android:textSize="16sp" />
     </LinearLayout>
-    <TextView
-        android:layout_width="wrap_content"
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:fontFamily="@font/poppins"
-        android:text="My Playlist"
-        android:textColor="@color/green_500"
-        android:textSize="25sp"
-        android:textStyle="bold" />
+        android:layout_marginBottom="15dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:fontFamily="@font/poppins"
+            android:text="My Playlist"
+            android:textColor="@color/white"
+            android:textSize="27sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvViewAllSongs"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:fontFamily="@font/poppins"
+            android:text="View All"
+            android:textColor="@color/green_500"
+            android:textSize="16sp"
+            android:clickable="true"/>
+    </LinearLayout>
 
     <ListView
         android:id="@+id/lvSongs"
@@ -69,7 +97,7 @@
             android:fontFamily="@font/poppins"
             android:text="Search"
             android:textAllCaps="false"
-            android:textColor="@color/white" />
+            android:textColor="@color/black_500" />
 
         <Button
             android:id="@+id/btnStopMusic"

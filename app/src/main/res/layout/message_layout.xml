@@ -25,16 +25,17 @@
             android:layout_height="wrap_content"
             android:layout_weight="0.13"
             android:fontFamily="@font/poppins"
-            android:text="To: " />
+            android:text="To: "
+            android:textColor="@color/white" />
 
         <TextView
             android:id="@+id/tvNumberTo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:fontFamily="@font/poppins"
             android:text="09999999999"
-            android:textColor="@color/black_500"
-            android:fontFamily="@font/poppins" />
+            android:textColor="@color/white" />
 
     </LinearLayout>
 
@@ -43,22 +44,27 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         android:fontFamily="@font/poppins"
-        android:text="Message " />
+        android:text="Message "
+        android:textColor="@color/white" />
 
     <EditText
         android:id="@+id/etContactMessage"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:padding="15dp"
-        android:background="@drawable/background2"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/et_selector2"
         android:ems="10"
         android:fontFamily="@font/poppins"
-        android:hint="Compose"
         android:gravity="start|top"
+        android:hint="Compose"
         android:inputType="textMultiLine"
-        android:minLines="7"
         android:maxLines="10"
+        android:minLines="7"
+        android:padding="15dp"
+        android:textColor="@color/white"
+        android:textColorHighlight="@color/green_500"
+        android:textColorHint="@color/black_100"
+        android:textCursorDrawable="@drawable/cursor"
         android:textSize="14sp" />
 
     <Button
@@ -70,5 +76,5 @@
         android:fontFamily="@font/poppins"
         android:text="Send"
         android:textAllCaps="false"
-        android:textColor="@color/white" />
+        android:textColor="@color/black_500" />
 </LinearLayout>

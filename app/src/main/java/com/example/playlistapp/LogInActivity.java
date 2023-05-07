@@ -40,7 +40,7 @@ public class LogInActivity extends AppCompatActivity {
                         Toast.makeText(LogInActivity.this, "Invalid email and password!", Toast.LENGTH_SHORT).show();
                     }
                     else {
-                        Toast.makeText(LogInActivity.this, "Login Successful!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(LogInActivity.this, "Login successful!", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(LogInActivity.this, PlaylistActivity.class);
                         startActivity(intent);
                         finish();

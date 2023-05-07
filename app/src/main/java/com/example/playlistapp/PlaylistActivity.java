@@ -8,13 +8,16 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Shader;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.io.File;
@@ -23,12 +26,23 @@ import java.util.ArrayList;
 public class PlaylistActivity extends AppCompatActivity {
 
     ArrayList<DataModel> dataModels;
-    TextView tvLogout;
+    TextView tvLogout, tvViewAllSongs;
     ListView listView;
     Button btnSearch, btnStop;
     ImageView imgProfile;
+    AlertDialog alertDialog;
 
-    private static CustomAdapter adapter;
+    //  Custom Search
+    EditText etSearch;
+    Button btnSearchMusic;
+    ImageView closeSearchButton;
+
+    private static CustomAdapter adapterForDataModels;
+    private static CustomAdapter adapterForSearchMusic;
+    CustomAdapter adapterForStopMusic;
+
+//    private MusicService.MyBinder binder;
+//    private boolean isBound;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,23 +51,51 @@ public class PlaylistActivity extends AppCompatActivity {
 
         listView = (ListView) findViewById(R.id.lvSongs);
         tvLogout = (TextView) findViewById(R.id.tvLogout);
+        tvViewAllSongs = (TextView) findViewById(R.id.tvViewAllSongs);
         btnSearch = (Button) findViewById(R.id.btnSearch);
         btnStop = (Button) findViewById(R.id.btnStopMusic);
         imgProfile = (ImageView) findViewById(R.id.imgAccountProfile);
 
         accountProfile();
+
         setDataModels();
+        adapterForDataModels = new CustomAdapter(dataModels,getApplicationContext());
+        listView.setAdapter(adapterForDataModels);
+
+        btnSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showCustomSearchMusic();
+            }
+        });
 
         btnStop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                stopService(new Intent(PlaylistActivity.this, MusicService.class));
+                //stopService(new Intent(PlaylistActivity.this, MusicService.class));
+                stopPlayingMusic();
+            }
+        });
+
+        tvViewAllSongs.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                tvViewAllSongs.setPaintFlags(tvViewAllSongs.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
+                tvViewAllSongs.setTextColor(getResources().getColor(R.color.white));
+                //String filterText = etSearch.getText().toString();
+                //adapterForSearchMusic = new CustomAdapter(dataModels,getApplicationContext());
+                //adapterForDataModels.filter(filterText);
+
+                // Clear the ListView before adding the filtered data
+                listView.setAdapter(null);
+                listView.setAdapter(adapterForDataModels);
             }
         });
 
         tvLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                stopPlayingMusic();
                 Intent intent = new Intent(PlaylistActivity.this, LogInActivity.class);
                 startActivity(intent);
                 finish();
@@ -67,28 +109,20 @@ public class PlaylistActivity extends AppCompatActivity {
         dataModels.add(new DataModel("Cruel Summer", "Taylor Swift", "02:59"));
         dataModels.add(new DataModel("Don't Blame Me", "Taylor Swift", "03:56"));
         dataModels.add(new DataModel("As It Was", "Harry Styles", "02:45"));
-
-        adapter = new CustomAdapter(dataModels,getApplicationContext());
-        listView.setAdapter(adapter);
     }
 
     private void accountProfile() {
-        // Get the file path of the saved image
         String filePath = "/storage/emulated/0/Android/data/com.example.playlistapp/files/my_image.jpg";
-
-        // Create a File object from the file path
         File file = new File(filePath);
 
-        // Check if the file exists and is a file (not a directory)
         if (file.exists() && file.isFile()) {
-            // Load the image into an ImageView or any other view that supports displaying images
             Bitmap bitmap = BitmapFactory.decodeFile(filePath);
             imgProfile.setImageBitmap(bitmap);
         } else {
-            // Handle the case when the file does not exist or is not a file
             Toast.makeText(this, "File not found", Toast.LENGTH_SHORT).show();
         }
 
+        //  The following code will make the ImageView crop to circle
         Bitmap originalBitmap = BitmapFactory.decodeFile(filePath);
         Bitmap bitmap = Bitmap.createBitmap(originalBitmap.getWidth(), originalBitmap.getHeight(), Bitmap.Config.ARGB_8888);
 
@@ -99,7 +133,53 @@ public class PlaylistActivity extends AppCompatActivity {
 
         canvas.drawCircle(originalBitmap.getWidth() / 2f, originalBitmap.getHeight() / 2f, originalBitmap.getWidth() / 2f, paint);
 
-        // Set the circular bitmap to the ImageView
         imgProfile.setImageBitmap(bitmap);
+    }
+
+    private void showCustomSearchMusic() {
+        View dialogView = LayoutInflater.from(this).inflate(R.layout.search_layout, null);
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setView(dialogView);
+
+        etSearch = dialogView.findViewById(R.id.etSearch);
+        btnSearchMusic = dialogView.findViewById(R.id.btnSearchMusic);
+        closeSearchButton = dialogView.findViewById(R.id.btnCLose3);
+
+        setDataModels();
+
+        btnSearchMusic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String filterText = etSearch.getText().toString();
+                adapterForSearchMusic = new CustomAdapter(dataModels,getApplicationContext());
+                adapterForSearchMusic.filter(filterText);
+
+                // Clear the ListView before adding the filtered data
+                listView.setAdapter(null);
+                listView.setAdapter(adapterForSearchMusic);
+                alertDialog.dismiss();
+            }
+        });
+
+        closeSearchButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                alertDialog.dismiss();
+            }
+        });
+
+        alertDialog = builder.create();
+        alertDialog.show();
+    }
+
+    private void stopPlayingMusic() {
+        adapterForStopMusic = (CustomAdapter) listView.getAdapter();
+        Toast.makeText(PlaylistActivity.this, "Music stopped!", Toast.LENGTH_SHORT).show();
+        adapterForStopMusic.stopMusic();
+    }
+
+    private void switchAdapter() {
+
     }
 }

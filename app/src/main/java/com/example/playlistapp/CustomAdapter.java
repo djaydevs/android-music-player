@@ -6,7 +6,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -15,9 +14,60 @@ import java.util.ArrayList;
 
 public class CustomAdapter extends ArrayAdapter<DataModel> {
     private final ArrayList<DataModel> dataSet;
+    private final ArrayList<DataModel> filteredDataSet;
     Context mContext;
     MediaPlayer mPlayer;
     int status = 0;
+
+    public CustomAdapter(ArrayList<DataModel> data, Context context) {
+        super(context, R.layout.row_layout, data);
+        this.dataSet = data;
+        this.mContext = context;
+
+        filteredDataSet = new ArrayList<>(data);
+    }
+
+    public void filter(String query) {
+        if (query.isEmpty()) {
+            filteredDataSet.addAll(dataSet);
+        }
+        else {
+            filteredDataSet.clear();
+            for (DataModel item : dataSet) {
+                if (item.getTitle().contains(query)) {
+                    filteredDataSet.add(item);
+                }
+                if (item.getArtist().contains(query)) {
+                    filteredDataSet.add(item);
+                }
+            }
+        }
+        notifyDataSetChanged();
+    }
+
+    public void stopMusic() {
+        if (mPlayer != null) {
+            mPlayer.stop();
+            mPlayer.release();
+            mPlayer = null;
+        }
+    }
+
+    @Override
+    public int getCount() {
+        return filteredDataSet.size();
+    }
+
+    @Override
+    public DataModel getItem(int position) {
+        return filteredDataSet.get(position);
+    }
+
+    @Override
+    public long getItemId(int position) {
+        return position;
+    }
+
 
     private static class ViewHolder {
         TextView tvTitle;
@@ -25,12 +75,6 @@ public class CustomAdapter extends ArrayAdapter<DataModel> {
         TextView tvTime;
         ImageView btnPlay;
         ImageView ivCover;
-    }
-
-    public CustomAdapter(ArrayList<DataModel> data, Context context) {
-        super(context, R.layout.row_layout, data);
-        this.dataSet = data;
-        this.mContext = context;
     }
 
 //    @Override
@@ -47,6 +91,7 @@ public class CustomAdapter extends ArrayAdapter<DataModel> {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         DataModel dataModel = getItem(position);
+        //DataModel item = getItem(position);
         ViewHolder viewHolder;
         View result;
 
@@ -69,6 +114,7 @@ public class CustomAdapter extends ArrayAdapter<DataModel> {
         }
 
         int value;
+
         viewHolder.tvTitle.setText(dataModel.getTitle());
         viewHolder.tvArtist.setText(dataModel.getArtist());
         viewHolder.tvTime.setText(dataModel.getTime());
@@ -102,10 +148,11 @@ public class CustomAdapter extends ArrayAdapter<DataModel> {
                         mPlayer.release();
                         mPlayer = null;
                     }
-
-                    mPlayer = MediaPlayer.create(view.getContext(), R.raw.cruel_summer);
-                    mPlayer.setLooping(false);
-                    mPlayer.start();
+                    else {
+                        mPlayer = MediaPlayer.create(view.getContext(), R.raw.cruel_summer);
+                        mPlayer.setLooping(false);
+                        mPlayer.start();
+                    }
                 }
                 if (dataModel.getTitle().equals("Don't Blame Me")) {
                     //viewHolder.ivCover.setBackgroundResource(R.drawable.reputation);
@@ -115,10 +162,11 @@ public class CustomAdapter extends ArrayAdapter<DataModel> {
                         mPlayer.release();
                         mPlayer = null;
                     }
-
-                    mPlayer = MediaPlayer.create(view.getContext(), R.raw.dont_blame_me);
-                    mPlayer.setLooping(false);
-                    mPlayer.start();
+                    else {
+                        mPlayer = MediaPlayer.create(view.getContext(), R.raw.dont_blame_me);
+                        mPlayer.setLooping(false);
+                        mPlayer.start();
+                    }
                 }
                 if (dataModel.getTitle().equals("As It Was")) {
                    //viewHolder.ivCover.setBackgroundResource(R.drawable.reputation);
@@ -128,13 +176,14 @@ public class CustomAdapter extends ArrayAdapter<DataModel> {
                         mPlayer.release();
                         mPlayer = null;
                     }
-
-                    mPlayer = MediaPlayer.create(view.getContext(), R.raw.as_it_was);
-                    mPlayer.setLooping(false);
-                    mPlayer.start();
+                    else {
+                        mPlayer = MediaPlayer.create(view.getContext(), R.raw.as_it_was);
+                        mPlayer.setLooping(false);
+                        mPlayer.start();
+                    }
                 }
 
-                Toast.makeText(view.getContext(), "Playing - " + dataModel.getTitle().toString(), Toast.LENGTH_LONG).show();
+                Toast.makeText(view.getContext(), "Playing - " + dataModel.getTitle() + " (" + dataModel.getArtist() + ")", Toast.LENGTH_LONG).show();
             }
         });
 

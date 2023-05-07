@@ -23,17 +23,18 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="0"
+            android:fontFamily="@font/poppins"
             android:text="From: "
-            android:fontFamily="@font/poppins" />
+            android:textColor="@color/white" />
 
         <TextView
             android:id="@+id/tvEmailFrom"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:fontFamily="@font/poppins"
             android:text="name@example.com"
-            android:textColor="@color/black_500"
-            android:fontFamily="@font/poppins" />
+            android:textColor="@color/white" />
     </LinearLayout>
 
     <LinearLayout
@@ -47,14 +48,22 @@
             android:layout_height="wrap_content"
             android:layout_weight="0"
             android:fontFamily="@font/poppins"
-            android:text="To: " />
+            android:text="To: "
+            android:textColor="@color/white" />
 
         <EditText
             android:id="@+id/etEmailTo"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
+            android:layout_marginLeft="5dp"
             android:layout_weight="1"
+            android:background="@drawable/et_selector"
             android:fontFamily="@font/poppins"
+            android:textColor="@color/white"
+            android:textColorHighlight="@color/green_500"
+            android:textColorHint="@color/black_200"
+            android:textColorLink="@color/green_500"
+            android:textCursorDrawable="@drawable/cursor"
             android:textSize="14sp" />
     </LinearLayout>
 
@@ -69,14 +78,22 @@
             android:layout_height="wrap_content"
             android:layout_weight="0"
             android:fontFamily="@font/poppins"
-            android:text="Subject: " />
+            android:text="Subject: "
+            android:textColor="@color/white" />
 
         <EditText
             android:id="@+id/etSubject"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
+            android:layout_marginLeft="5dp"
             android:layout_weight="1"
+            android:background="@drawable/et_selector"
             android:fontFamily="@font/poppins"
+            android:textColor="@color/white"
+            android:textColorHighlight="@color/green_500"
+            android:textColorHint="@color/black_200"
+            android:textColorLink="@color/green_500"
+            android:textCursorDrawable="@drawable/cursor"
             android:textSize="14sp" />
     </LinearLayout>
 
@@ -85,22 +102,28 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         android:fontFamily="@font/poppins"
-        android:text="Message " />
+        android:text="Message "
+        android:textColor="@color/white" />
 
     <EditText
         android:id="@+id/etEmailMessage"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:padding="15dp"
-        android:background="@drawable/background2"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/et_selector2"
         android:ems="10"
         android:fontFamily="@font/poppins"
-        android:hint="Compose"
         android:gravity="start|top"
+        android:hint="Compose"
         android:inputType="textMultiLine"
-        android:minLines="7"
         android:maxLines="10"
+        android:minLines="7"
+        android:padding="15dp"
+        android:textColor="@color/white"
+        android:textColorHighlight="@color/green_500"
+        android:textColorHint="@color/black_100"
+        android:textColorLink="@color/green_500"
+        android:textCursorDrawable="@drawable/cursor"
         android:textSize="14sp" />
 
     <Button
@@ -112,6 +135,6 @@
         android:fontFamily="@font/poppins"
         android:text="Send"
         android:textAllCaps="false"
-        android:textColor="@color/white" />
+        android:textColor="@color/black_500" />
 
 </LinearLayout>

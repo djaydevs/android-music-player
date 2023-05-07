@@ -168,7 +168,7 @@ public class SignUpActivity extends AppCompatActivity {
 
             // Display a success message
             //Toast.makeText(this, "Image saved to " + file.getAbsolutePath(), Toast.LENGTH_SHORT).show();
-            Toast.makeText(this, "Image saved!", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this, "Image saved!", Toast.LENGTH_SHORT).show();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -218,10 +218,8 @@ public class SignUpActivity extends AppCompatActivity {
     }
 
     private void showCustomContactDialog() {
-        // Inflate the custom layout file
         View dialogView = LayoutInflater.from(this).inflate(R.layout.message_layout, null);
 
-        // Create a new AlertDialog object and set the custom layout as its view
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setView(dialogView);
 
@@ -235,7 +233,6 @@ public class SignUpActivity extends AppCompatActivity {
         closeContactButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Close the dialog when the button is clicked
                 alertDialog.dismiss();
             }
         });

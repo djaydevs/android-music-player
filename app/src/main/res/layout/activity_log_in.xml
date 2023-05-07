@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/black_500"
     android:gravity="center"
     android:padding="50dp"
     android:orientation="vertical"
@@ -14,7 +15,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="30dp"
-        android:fontFamily="@font/poppins_bold"
+        android:fontFamily="@font/poppins_extrabold"
         android:text="Spogify"
         android:textColor="@color/green_500"
         android:textSize="50sp" />
@@ -28,13 +29,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppins"
-            android:text="Email" />
+            android:text="Email"
+            android:textColor="@color/white" />
 
         <EditText
             android:id="@+id/etEmail"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
+            android:background="@drawable/et_selector"
             android:fontFamily="@font/poppins"
+            android:textColor="@color/white"
+            android:textCursorDrawable="@drawable/cursor"
             android:textSize="15sp" />
 
     </LinearLayout>
@@ -42,21 +47,26 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:orientation="vertical">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppins"
-            android:text="Password" />
+            android:text="Password"
+            android:textColor="@color/white" />
 
         <EditText
             android:id="@+id/etPassword"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
+            android:background="@drawable/et_selector"
             android:fontFamily="@font/poppins"
-            android:textSize="15sp"
-            android:inputType="textPassword"/>
+            android:inputType="textPassword"
+            android:textColor="@color/white"
+            android:textCursorDrawable="@drawable/cursor"
+            android:textSize="15sp" />
 
     </LinearLayout>
 
@@ -76,14 +86,15 @@
             android:fontFamily="@font/poppins"
             android:text="Log In"
             android:textAllCaps="false"
-            android:textColor="@color/white" />
+            android:textColor="@color/black_500" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
             android:fontFamily="@font/poppins"
-            android:text="No account yet?" />
+            android:text="No account yet?"
+            android:textColor="@color/white"/>
 
         <Button
             android:id="@+id/btnSignup"
@@ -95,7 +106,7 @@
             android:fontFamily="@font/poppins"
             android:text="Sign Up"
             android:textAllCaps="false"
-            android:textColor="@color/white" />
+            android:textColor="@color/black_500" />
 
     </LinearLayout>
 
